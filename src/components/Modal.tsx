@@ -1,6 +1,6 @@
 import { useState } from "react";
 import imgSrcMap from "@/data/imgSourceMap";
-import { Bg, IconBox, LeftBox, TopMenu } from "./ModalStyle";
+import { Bg, IconBox, LeftBox, TopMenu } from "../styles/ModalStyle";
 import Image from "next/image";
 
 const Modal = () => {

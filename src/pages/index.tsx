@@ -36,18 +36,6 @@ const Home = () => {
 
   return (
     <>
-      <div>ARTSCLOUD</div>
-      {!language && <div>guide</div> && <div>가이드</div>}
-      <div>create</div>
-      <button
-        onClick={() => {
-          if (language == false) setLanguage(true);
-          else setLanguage(false);
-        }}
-      >
-        언어
-      </button>
-      <div>햄버거 메뉴</div>
       <div>
         <h2>ARTS Space</h2>
         <Swiper
