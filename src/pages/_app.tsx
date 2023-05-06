@@ -1,6 +1,21 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
+import { useState, useEffect } from "react";
+// COMPONENTS
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Modal from "@/components/Modal";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function MyApp({ Component, pageProps }: AppProps) {
+  const [menu, setMenu] = useState(false);
+
+  return (
+    <>
+      <Header setMenu={setMenu} />
+      {menu && <Component {...pageProps} />}
+      {!menu && <Modal />}
+      <Footer />
+    </>
+  );
 }
+
+export default MyApp;

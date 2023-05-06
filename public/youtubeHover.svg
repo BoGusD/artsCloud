@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#5a34fa"/>
+      <stop offset="1" stop-color="#fa026b"/>
+    </linearGradient>
+  </defs>
+  <g id="유튜브" transform="translate(-288 -484)">
+    <g id="그룹_31538" data-name="그룹 31538" transform="translate(287.98 484)">
+      <path id="타원_134" data-name="타원 134" d="M25,1a24.007,24.007,0,0,0-9.342,46.114A24.006,24.006,0,0,0,34.342,2.886,23.849,23.849,0,0,0,25,1m0-1A25,25,0,1,1,0,25,25,25,0,0,1,25,0Z" transform="translate(0.02)" fill="url(#linear-gradient)"/>
+      <path id="사각형_887" data-name="사각형 887" d="M6,1A5.006,5.006,0,0,0,1,6v9a5.006,5.006,0,0,0,5,5H23a5.006,5.006,0,0,0,5-5V6a5.006,5.006,0,0,0-5-5H6M6,0H23a6,6,0,0,1,6,6v9a6,6,0,0,1-6,6H6a6,6,0,0,1-6-6V6A6,6,0,0,1,6,0Z" transform="translate(11.02 15)" fill="url(#linear-gradient)"/>
+      <path id="다각형_6" data-name="다각형 6" d="M3.652,0,7.3,5.345H0Z" transform="translate(28.622 21.453) rotate(90)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>
