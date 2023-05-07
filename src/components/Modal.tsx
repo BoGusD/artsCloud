@@ -1,10 +1,11 @@
 import { useState } from "react";
 import imgSrcMap from "@/data/imgSourceMap";
-import { Bg, IconBox, LeftBox, TopMenu } from "../styles/ModalStyle";
+import { Bg, ModalContents, IconBox } from "../styles/ModalStyle";
 import Image from "next/image";
 
 const Modal = () => {
   const [svg, setSvg] = useState();
+  const [menu, setMenu] = useState(false);
 
   const onMouseEnter = (event: any) => {
     for (let i = 0; i < imgSrcMap.length; i++) {
@@ -27,44 +28,48 @@ const Modal = () => {
   return (
     <>
       <Bg>
-        <div className="flexBox">
-          <LeftBox>
-            <TopMenu>
-              <img src="pupleicon.png" className="imgIcon" />
-              <span>SIGN IN |</span>
-              <span>SIGN OUT</span>
-            </TopMenu>
-            <div>DIVE IN</div>
-            <div>ART PLANET</div>
-            <div>ART SPACE</div>
-          </LeftBox>
-
-          <IconBox>
-            {imgSrcMap.map((ele: any) => (
-              <div key={ele.origin}>
-                <Image
-                  onMouseEnter={onMouseEnter}
-                  onMouseLeave={onMouseLeave}
-                  src={ele.origin}
-                  alt={ele.alt}
-                  width="50"
-                  height="50"
-                />
+        <ModalContents>
+          <div className="contents">
+            <div className="topMenu">
+              <div className="item">
+                <div className="profileImage">
+                  <img src="pupleicon.png" className="profileImg" />
+                </div>
+                <span>Sign in </span>
+                <div className="barIcon"></div>
+                <span>Sign up</span>
               </div>
-            ))}
-          </IconBox>
-        </div>
-        <div className="over1100">
-          <div>ABOUT</div>
-          <div>HELP</div>
-          <div>GUIDE</div>
-        </div>
-
-        <div className="under1100">
-          <div className="innerBox">ABOUT</div>
-          <div className="innerBox">HELP</div>
-          <div className="innerBox">GUIDE</div>
-        </div>
+            </div>
+            <div className="menu-item">DIVE IN</div>
+            <div className="menu-item">
+              <a href="/artplanet">ART PLANET</a>
+            </div>
+            <div className="menu-item">
+              <a href="artspace">ART SPACE</a>
+            </div>
+            <div className="underMenu">
+              <a href="https://about.artscloud.net/">ABOUT</a>
+              <div>
+                <a href="/help">HELP</a>
+              </div>
+              <div>GUIDE</div>
+            </div>
+            <IconBox>
+              {imgSrcMap.map((ele: any) => (
+                <div key={ele.origin} className="imgIcon">
+                  <Image
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                    src={ele.origin}
+                    alt={ele.alt}
+                    width="50"
+                    height="50"
+                  />
+                </div>
+              ))}
+            </IconBox>
+          </div>
+        </ModalContents>
       </Bg>
     </>
   );

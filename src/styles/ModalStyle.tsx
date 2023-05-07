@@ -1,94 +1,186 @@
 import styled from "styled-components";
 
-export const Bg = styled.div`
-  position: relative;
+export const Bg = styled.nav`
+  padding: 88px 45px 0 45px;
+  background-color: #0f0f11;
+  width: 100vw;
+  min-width: 360px;
   height: 100vh;
-  background-color: black;
-  color: white;
-  font-size: 90px;
-  font-family: GmarketSans;
-  font-style: normal;
-  font-weight: normal;
-  box-sizing: border-box;
-  gap: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(0);
+  transition-duration: 0.3s;
+  color: #ffffff;
 
-  .flexBox {
-    display: flex;
-    flex-wrap: wrap;
+  @media (min-width: 1100px) {
+    padding: 126px 80px 0 170px;
   }
-  .over1100 {
-    position: relative;
-    width: 300px;
+`;
+export const ModalContents = styled.div`
+  color: white;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  height: 100%;
+
+  .contents {
     display: flex;
-    flex-direction: row;
-    justify-content: end;
-    font-size: 24px;
-    margin-top: 200px;
-    left: 75%;
-    margin-bottom: 20px;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 50px;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    @media (min-width: 1100px) {
+      margin-top: 0px;
+      gap: 80px;
+      height: 100%;
+      width: 100%;
+    }
+    .topMenu {
+      display: flex;
+      -webkit-align-items: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      height: 34px;
+      gap: 14px;
+      @media (min-width: 1100px) {
+        font-size: 24px;
+        gap: 30px;
+        height: auto;
+      }
+      .item {
+        display: flex;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        gap: 8px;
+        -webkit-tap-highlight-color: transparent !important;
+        @media (min-width: 1100px) {
+          gap: 30px;
+        }
+        .profileImage {
+          background-color: #5a45fa;
+          width: 34px;
+          height: 34px;
+          border-radius: 100%;
+          position: relative;
+          cursor: pointer;
+          display: flex;
+          /* -webkit-box-pack: center; */
+          justify-content: center;
+          /* -webkit-box-align: center; */
+          align-items: center;
+          overflow: hidden;
+          @media (min-width: 1100px) {
+            width: 60px;
+            height: 60px;
+          }
+          .profileImg {
+            width: 34px;
+            height: 34px;
+            @media (min-width: 1100px) {
+              width: 60px;
+              height: 60px;
+            }
+          }
+        }
+        .barIcon {
+          border: 1px solid #585859;
+          height: 15px;
+          margin: 5px 5px 0;
+          color: white !important;
+          @media (min-width: 1100px) {
+            height: 20px;
+            margin-top: 5px;
+          }
+        }
+        .span {
+          padding: 0.15vw 0;
+        }
+      }
+    }
+  }
+  .menu-item {
+    font-size: 34px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent !important;
+    text-transform: uppercase;
+    @media (min-width: 1100px) {
+      font-size: 90px;
+    }
+    a {
+      color: white;
+    }
+  }
+  .underMenu {
+    display: flex;
+    gap: 30px;
+    font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
-
-    > div {
-      width: 100px;
-    }
-    @media (max-width: 1100px) {
-      display: none;
-    }
-  }
-  .under1100 {
-    position: relative;
-    width: 600px;
-    display: flex;
-    font-size: 16px;
-
-    .innerBox {
-      margin-left: 50px;
-    }
+    margin-top: 60px;
     @media (min-width: 1100px) {
-      display: none;
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
+      -webkit-justify-content: end;
+      justify-content: end;
+      bottom: 96px;
+      right: 170px;
+      gap: 50px;
+      font-size: 24px;
+      margin-top: 50px;
+      margin-bottom: 20px;
     }
-  }
-
-  @media (max-width: 1100px) {
-    font-size: 30px;
-  }
-`;
-
-export const TopMenu = styled.div`
-  font-size: 24px;
-  @media (max-width: 1100px) {
-    font-size: 16px;
-  }
-  .imgIcon {
-    width: 60px;
-    @media (max-width: 1100px) {
-      width: 34px;
+    a {
+      color: white;
     }
   }
 `;
-
-export const LeftBox = styled.div`
-  width: 95%;
-`;
-
 export const IconBox = styled.div`
-  width: 5%;
   display: flex;
-  position: relative;
-  flex-direction: column;
-  color: white;
-  cursor: pointer;
-  margin-right: 20px 0 0;
-  height: 350px;
-  justify-content: space-between;
-
-  @media (max-width: 1100px) {
-    flex-direction: row;
+  gap: 17px;
+  @media (min-width: 1100px) {
+    position: absolute;
+    right: 85px;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 50px;
+  }
+  .iconBox {
     display: flex;
-    position: relative;
-
-    width: 300px;
-    height: 100%;
+    gap: 17px;
+    @media (min-width: 1100px) {
+      position: absolute;
+      right: 200px;
+      flex-direction: column;
+      gap: 40px;
+      margin-top: 50px;
+      color: white;
+    }
+    .imgIcon {
+      position: relative;
+      display: flex;
+      -webkit-box-pack: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-size: 40px 40px;
+      @media (min-width: 1100px) {
+        width: 50px;
+        height: 50px;
+        background-size: 50px 50px;
+      }
+    }
   }
 `;
