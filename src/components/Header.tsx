@@ -1,22 +1,14 @@
 import { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react"; // basic
-import SwiperCore, { Navigation, Pagination } from "swiper";
-import "swiper/css"; //basic
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import { Bg, Contents } from "../styles/HeaderStyle";
 import Modal from "./Modal";
 
 // GLOBAL STATE
-// import { useRecoilValue } from 'recoil';
-// const loc = useRecoilValue(currentLoc);
 import { useRecoilState } from "recoil";
 import { currentLanguageState } from "@/module/recoil";
 
 interface Props {
   setMenu: any;
 }
-// setState 하는 부분은 BPT에서 갖다가 복붙하십쇼
 const Header = () => {
   const [currentLanguage, setCurrentLanguage] =
     useRecoilState(currentLanguageState);

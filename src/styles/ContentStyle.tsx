@@ -142,3 +142,65 @@ export const FlexBox = styled.div`
     min-height: 40vw;
   }
 `;
+export const Hexagon = styled.div`
+  width: ${(props: any) => props.viewportWidth} / 5;
+  height: ${(props: any) => props.viewportWidth} / 5;
+  background-color: #6c6;
+  position: relative;
+  -webkit-clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  );
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 1px solid purple;
+  @media (min-width: 1100px) {
+    width: ${(props: any) => props.viewportWidth} / 5;
+    height: ${(props: any) => props.viewportWidth} / 5;
+  }
+  .hexagonImg {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+
+    @media (min-width: 1100px) {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+`;
+export const SwiperHexagon = styled.div`
+  width: ${(props: any) => props.viewportWidth} / 5;
+  height: ${(props: any) => props.viewportWidth} / 5;
+  background-color: #6c6;
+  position: relative;
+  -webkit-clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  );
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 1px solid purple;
+  @media (min-width: 1100px) {
+    width: ${(props: any) => props.viewportWidth} / 5;
+    height: ${(props: any) => props.viewportWidth} / 5;
+  }
+  .hexagonImg {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+
+    @media (min-width: 1100px) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+`;

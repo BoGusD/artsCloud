@@ -1,79 +1,20 @@
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import SwiperCore, { Navigation, Pagination } from "swiper";
-import { Bg, ArtContent, FlexBox } from "@/styles/ContentStyle";
+import {
+  Bg,
+  ArtContent,
+  FlexBox,
+  Hexagon,
+  SwiperHexagon,
+} from "@/styles/ContentStyle";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import imgSrcMap from "@/data/imgSourceMap";
 import styled from "styled-components";
-import Image from "next/image";
 import { useRecoilValue } from "recoil";
 import { currentLanguageState } from "@/module/recoil";
-
-const testArr = [1, 2, 3, 4, 5];
-const Hexagon = styled.div`
-  width: ${(props: any) => props.viewportWidth} / 5;
-  height: ${(props: any) => props.viewportWidth} / 5;
-  background-color: #6c6;
-  position: relative;
-  -webkit-clip-path: polygon(
-    50% 0%,
-    100% 25%,
-    100% 75%,
-    50% 100%,
-    0% 75%,
-    0% 25%
-  );
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  border: 1px solid purple;
-  @media (min-width: 1100px) {
-    width: ${(props: any) => props.viewportWidth} / 5;
-    height: ${(props: any) => props.viewportWidth} / 5;
-  }
-  .hexagonImg {
-    object-fit: fill;
-    width: 100%;
-    height: 100%;
-
-    @media (min-width: 1100px) {
-      width: 100%;
-      height: 100%;
-      object-fit: fill;
-    }
-  }
-`;
-const SwiperHexagon = styled.div`
-  width: 300px;
-  height: 281px;
-  background-color: #6c6;
-  position: relative;
-  -webkit-clip-path: polygon(
-    50% 0%,
-    100% 25%,
-    100% 75%,
-    50% 100%,
-    0% 75%,
-    0% 25%
-  );
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  border: 1px solid purple;
-  @media (min-width: 1100px) {
-    width: 500px;
-    height: 469px;
-  }
-  .hexagonImg {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-
-    @media (min-width: 1100px) {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-`;
 
 const Content = () => {
   const currentLanguage = useRecoilValue(currentLanguageState);
@@ -99,8 +40,8 @@ const Content = () => {
                 <div className="swiperDetail">
                   <div className="swiperList">
                     <Swiper
-                      spaceBetween={50}
-                      slidesPerView={3}
+                      spaceBetween={200}
+                      slidesPerView={2}
                       className="swiperTrack"
                       scrollbar={{ draggable: true }}
                       navigation
@@ -157,7 +98,7 @@ const Content = () => {
             <FlexBox>
               {imgSrcMap.map((ele: any) => (
                 <div key={ele.name}>
-                  <Hexagon viewportWidth={viewportWidth}>
+                  <Hexagon>
                     <img src={ele.name} alt={ele.art} className="hexagonImg" />
                   </Hexagon>
                 </div>
