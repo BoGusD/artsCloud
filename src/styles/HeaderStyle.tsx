@@ -27,9 +27,14 @@ export const Contents = styled.div`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 32px;
+  // tetz, 여기서 크기가 32px로 되어 있어서 크기다 달라짐
+  // 기존 페이지를 보니 전체 크기는 88px 이고 안에 들어있는 애들이 32px 이라서, 88px 로 고정하고
+  // 내부는 flex 수직 정렬이 좋을 것 같아서 변경 했습니다!
+  height: 88px;
   width: 100%;
   z-index: 5001;
+  // space-between 으로 로고 파트랑, 메뉴 파트를 양쪽 끝단으로 보냈으므로 gap 은 안먹히는 상황
+  /* gap: 30px; */
 
   @media (min-width: 1100px) {
     height: 56px;
@@ -64,6 +69,8 @@ export const Contents = styled.div`
     display: flex;
     -webkit-box-align: center;
     align-items: center;
+    // tetz, 오른쪽 메뉴 끼리 일정 이상 떨어져야 하므로 gap: 30px 를 여기다 부여
+    gap: 30px;
     a {
       color: white;
     }
@@ -83,7 +90,6 @@ export const Contents = styled.div`
       line-height: 12px;
       text-transform: uppercase;
       align-items: center;
-      gap: 30px;
       @media (min-width: 1100px) {
         height: 46px;
         border-radius: 33px;
@@ -99,12 +105,14 @@ export const Contents = styled.div`
     }
     .languageMenu {
       display: flex;
+      align-items: center;
       .languageLogo {
+        display: flex;
+        align-items: center;
         height: 20px;
+        // tetz, margin-top 으로 인해 지구본이 아래로 내려가 있어서 해당 부분 삭제
         width: 20px;
-        margin-top: 20px;
         margin-right: 5px;
-        justify-content: center;
       }
       .sort {
         background-color: black;

@@ -26,7 +26,7 @@ const Hexagon = styled.div`
     0% 25%
   );
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  border: 3px solid purple;
+  border: 1px solid purple;
   @media (min-width: 1100px) {
     width: ${(props: any) => props.viewportWidth} / 5;
     height: ${(props: any) => props.viewportWidth} / 5;
@@ -57,20 +57,20 @@ const SwiperHexagon = styled.div`
     0% 25%
   );
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  border: 3px solid purple;
+  border: 1px solid purple;
   @media (min-width: 1100px) {
     width: 500px;
     height: 469px;
   }
   .hexagonImg {
-    object-fit: fill;
+    object-fit: cover;
     width: 100%;
     height: 100%;
 
     @media (min-width: 1100px) {
       width: 100%;
       height: 100%;
-      object-fit: fill;
+      object-fit: cover;
     }
   }
 `;
@@ -111,9 +111,9 @@ const Content = () => {
                         },
                       }}
                     >
-                      <SwiperSlide>
-                        {imgSrcMap.map((ele: any) => (
-                          <div key={ele.name} className="swiperHexagon">
+                      {imgSrcMap.map((ele: any) => (
+                        <SwiperSlide key={ele.name}>
+                          <div className="swiperHexagon">
                             <SwiperHexagon>
                               <img
                                 src={ele.name}
@@ -122,8 +122,8 @@ const Content = () => {
                               />
                             </SwiperHexagon>
                           </div>
-                        ))}
-                      </SwiperSlide>
+                        </SwiperSlide>
+                      ))}
                     </Swiper>
                   </div>
                 </div>
