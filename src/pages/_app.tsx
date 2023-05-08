@@ -23,8 +23,12 @@ const GlobalStyle = createGlobalStyle`
     font-weight: normal;
     box-sizing: border-box;
     text-decoration: none;
+
     
   }
+   ::-webkit-scrollbar {
+  display: none; 
+}
 `;
 
 function MyApp({ Component, pageProps }: AppProps) {
