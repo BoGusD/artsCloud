@@ -62,6 +62,17 @@ const SwiperHexagon = styled.div`
     width: 500px;
     height: 469px;
   }
+  .hexagonImg {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+
+    @media (min-width: 1100px) {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
 `;
 
 const Content = () => {
@@ -102,7 +113,7 @@ const Content = () => {
                     >
                       <SwiperSlide>
                         {imgSrcMap.map((ele: any) => (
-                          <div key={ele.name}>
+                          <div key={ele.name} className="swiperHexagon">
                             <SwiperHexagon>
                               <img
                                 src={ele.name}

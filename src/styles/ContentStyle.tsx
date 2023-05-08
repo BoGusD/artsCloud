@@ -51,6 +51,10 @@ export const ArtContent = styled.div`
             @media (min-width: 1100px) {
               height: 636px;
             }
+            .swiperHexagon {
+              display: flex;
+              flex-direction: row;
+            }
           }
         }
       }
