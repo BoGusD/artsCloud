@@ -1,12 +1,49 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import SwiperCore, { Navigation, Pagination } from "swiper";
-import { Bg, ArtContent } from "@/styles/ContentStyle";
+import { Bg, ArtContent, FlexBox } from "@/styles/ContentStyle";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import imgSrcMap from "@/data/imgSourceMap";
 import styled from "styled-components";
+import Image from "next/image";
+import { useRecoilValue } from "recoil";
+import { currentLanguageState } from "@/module/recoil";
+
+const testArr = [1, 2, 3, 4, 5];
 const Hexagon = styled.div`
+  width: ${(props: any) => props.viewportWidth} / 5;
+  height: ${(props: any) => props.viewportWidth} / 5;
+  background-color: #6c6;
+  position: relative;
+  -webkit-clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  );
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 3px solid purple;
+  @media (min-width: 1100px) {
+    width: ${(props: any) => props.viewportWidth} / 5;
+    height: ${(props: any) => props.viewportWidth} / 5;
+  }
+  .hexagonImg {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+
+    @media (min-width: 1100px) {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+`;
+const SwiperHexagon = styled.div`
   width: 300px;
   height: 281px;
   background-color: #6c6;
@@ -25,35 +62,21 @@ const Hexagon = styled.div`
     width: 500px;
     height: 469px;
   }
-  .hexagonImg {
-    object-fit: cover;
-    width: 300px;
-    height: 281px;
-    @media (min-width: 1100px) {
-      width: 500px;
-      height: 469px;
-      object-fit: fill;
-    }
-  }
 `;
 
-const FlexBox = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px 13px;
-  padding-top: 50px;
-  margin: 0px auto;
-  max-width: 650px;
-  min-height: 100vh;
-  @media (min-width: 1100px) {
-    max-width: 1920px;
-    grid-template-columns: repeat(3, 26%);
-    gap: 70px 11%;
-    padding-bottom: 0px;
-    min-height: 40vw;
-  }
-`;
 const Content = () => {
+  const currentLanguage = useRecoilValue(currentLanguageState);
+  const [viewportWidth, setViewportWidth] = useState<number>(0);
+
+  useEffect(() => {
+    window.addEventListener("resize", function () {
+      setViewportWidth(window.innerWidth);
+    });
+    return window.removeEventListener("resize", function () {
+      setViewportWidth(window.innerWidth);
+    });
+  }, []);
+
   return (
     <>
       <Bg>
@@ -65,8 +88,8 @@ const Content = () => {
                 <div className="swiperDetail">
                   <div className="swiperList">
                     <Swiper
-                      spaceBetween={400}
-                      slidesPerView={2}
+                      spaceBetween={50}
+                      slidesPerView={3}
                       className="swiperTrack"
                       scrollbar={{ draggable: true }}
                       navigation
@@ -78,133 +101,42 @@ const Content = () => {
                       }}
                     >
                       <SwiperSlide>
-                        <Hexagon>
-                          <img src="./movie/1917.jpg" className="hexagonImg" />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img
-                            src="./movie/검은사제들.jpg"
-                            className="hexagonImg"
-                          />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img
-                            src="./movie/기생충.jpg"
-                            className="hexagonImg"
-                          />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img src="./movie/돈.jpg" className="hexagonImg" />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img
-                            src="./movie/레이징파이어.jpg"
-                            className="hexagonImg"
-                          />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img
-                            src="./movie/매트릭스.jpg"
-                            className="hexagonImg"
-                          />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img
-                            src="./movie/백두산.jpg"
-                            className="hexagonImg"
-                          />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img
-                            src="./movie/부산행.jpg"
-                            className="hexagonImg"
-                          />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img
-                            src="./movie/스마일.jpg"
-                            className="hexagonImg"
-                          />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img
-                            src="./movie/신세계.jpg"
-                            className="hexagonImg"
-                          />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img
-                            src="./movie/어바웃타임.jpg"
-                            className="hexagonImg"
-                          />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img
-                            src="./movie/터미네이터.jpg"
-                            className="hexagonImg"
-                          />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img
-                            src="./movie/어벤져스.jpg"
-                            className="hexagonImg"
-                          />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img
-                            src="./movie/엑시트.jpg"
-                            className="hexagonImg"
-                          />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img src="./movie/콜.jpg" className="hexagonImg" />
-                        </Hexagon>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <Hexagon>
-                          <img src="./movie/타짜.jpg" className="hexagonImg" />
-                        </Hexagon>
+                        {imgSrcMap.map((ele: any) => (
+                          <div key={ele.name}>
+                            <SwiperHexagon>
+                              <img
+                                src={ele.name}
+                                alt={ele.art}
+                                className="hexagonImg"
+                              />
+                            </SwiperHexagon>
+                          </div>
+                        ))}
                       </SwiperSlide>
                     </Swiper>
                   </div>
                 </div>
+                <div>arrow</div>
               </div>
             </div>
           </div>
           <div className="observerContents">
-            <div className="serachContents">
+            <div className="searchContents">
               <div className="searchMenu">
-                <div className="menuTitle">Newest</div>
-                <div className="menuTitle">Popular</div>
-                <div className="menuTitle">Most Liked</div>
+                {currentLanguage === "EN" && (
+                  <>
+                    <div className="menuTitle">Newest</div>
+                    <div className="menuTitle">Popular</div>
+                    <div className="menuTitle">Most Liked</div>
+                  </>
+                )}
+                {currentLanguage === "KR" && (
+                  <>
+                    <div className="menuTitle">최신순</div>
+                    <div className="menuTitle">조회순</div>
+                    <div className="menuTitle">좋아요순</div>
+                  </>
+                )}
               </div>
               <div className="search">
                 <input placeholder="Serach" className="serachHolder" />
@@ -212,78 +144,13 @@ const Content = () => {
               </div>
             </div>
             <FlexBox>
-              <Hexagon>
-                <img src="./movie/타짜.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/콜.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/엑시트.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/터미네이터.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/어벤져스.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/스즈메의 문단속.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/신세계.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/스마일.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/부산행.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/백두산.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/매트릭스.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/레이징파이어.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/돈.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/기생충.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/검은사제들.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/1917.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/파워.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/플레민.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/투모로우.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/베테랑.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/테넷.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/터널.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/전우치.jpg" className="hexagonImg" />
-              </Hexagon>
-              <Hexagon>
-                <img src="./movie/연가시.jpg" className="hexagonImg" />
-              </Hexagon>
+              {imgSrcMap.map((ele: any) => (
+                <div key={ele.name}>
+                  <Hexagon viewportWidth={viewportWidth}>
+                    <img src={ele.name} alt={ele.art} className="hexagonImg" />
+                  </Hexagon>
+                </div>
+              ))}
             </FlexBox>
           </div>
         </ArtContent>

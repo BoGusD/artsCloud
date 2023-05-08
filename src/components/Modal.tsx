@@ -1,5 +1,5 @@
 import { useState } from "react";
-import imgSrcMap from "@/data/imgSourceMap";
+import iconSrcMap from "@/data/iconSourceMap";
 import { Bg, ModalContents, IconBox } from "../styles/ModalStyle";
 import Image from "next/image";
 
@@ -8,18 +8,18 @@ const Modal = () => {
   const [menu, setMenu] = useState(false);
 
   const onMouseEnter = (event: any) => {
-    for (let i = 0; i < imgSrcMap.length; i++) {
-      if (imgSrcMap[i].origin === event.target.src) {
-        event.target.src = imgSrcMap[i].hover;
+    for (let i = 0; i < iconSrcMap.length; i++) {
+      if (iconSrcMap[i].origin === event.target.src) {
+        event.target.src = iconSrcMap[i].hover;
         return;
       }
     }
   };
 
   const onMouseLeave = (event: any) => {
-    for (let i = 0; i < imgSrcMap.length; i++) {
-      if (imgSrcMap[i].hover === event.target.src) {
-        event.target.src = imgSrcMap[i].origin;
+    for (let i = 0; i < iconSrcMap.length; i++) {
+      if (iconSrcMap[i].hover === event.target.src) {
+        event.target.src = iconSrcMap[i].origin;
         return;
       }
     }
@@ -42,10 +42,10 @@ const Modal = () => {
             </div>
             <div className="menu-item">DIVE IN</div>
             <div className="menu-item">
-              <a href="/artplanet">ART PLANET</a>
+              <a href="https://artscloud.net/artplanet">ART PLANET</a>
             </div>
             <div className="menu-item">
-              <a href="artspace">ART SPACE</a>
+              <a href="https://artscloud.net/artspace">ART SPACE</a>
             </div>
             <div className="underMenu">
               <a href="https://about.artscloud.net/">ABOUT</a>
@@ -55,7 +55,7 @@ const Modal = () => {
               <div>GUIDE</div>
             </div>
             <IconBox>
-              {imgSrcMap.map((ele: any) => (
+              {iconSrcMap.map((ele: any) => (
                 <div key={ele.origin} className="imgIcon">
                   <Image
                     onMouseEnter={onMouseEnter}

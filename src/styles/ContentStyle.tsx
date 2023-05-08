@@ -59,9 +59,10 @@ export const ArtContent = styled.div`
   .observerContents {
     padding: 0 20px;
     @media (min-width: 1100px) {
+      margin-top: 100px;
       padding: 0 170px;
     }
-    .serachContents {
+    .searchContents {
       margin: 0 auto;
       max-width: 650px;
       @media (min-width: 1100px) {
@@ -106,7 +107,34 @@ export const ArtContent = styled.div`
           max-width: 405px;
           padding: 0px 24px;
         }
+        .serachHolder {
+          background-color: transparent;
+          color: rgb(255, 255, 255);
+          line-height: 2.5;
+          border: none;
+          font-size: 12px;
+          width: 100%;
+          @media (min-width: 1100px) {
+            font-size: 18px;
+          }
+        }
       }
     }
+  }
+`;
+export const FlexBox = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 13px;
+  padding-top: 50px;
+  margin: 0px auto;
+  max-width: 650px;
+  min-height: 100vh;
+  @media (min-width: 1100px) {
+    max-width: 1920px;
+    grid-template-columns: repeat(3, 26%);
+    gap: 70px 11%;
+    padding-bottom: 0px;
+    min-height: 40vw;
   }
 `;

@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { useState, useEffect } from "react";
 import { createGlobalStyle } from "styled-components";
+import { RecoilRoot } from "recoil";
 // COMPONENTS
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -22,9 +23,7 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
     font-weight: normal;
     box-sizing: border-box;
-    text-decoration: none;
-
-    
+    text-decoration: none; 
   }
    ::-webkit-scrollbar {
   display: none; 
@@ -34,13 +33,15 @@ const GlobalStyle = createGlobalStyle`
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Bg>
-        <GlobalStyle />
-        <Header />
-        <Component {...pageProps} />
-        <Content />
-        <Footer />
-      </Bg>
+      <RecoilRoot>
+        <Bg>
+          <GlobalStyle />
+          <Header />
+          <Component {...pageProps} />
+          <Content />
+          <Footer />
+        </Bg>
+      </RecoilRoot>
     </>
   );
 }

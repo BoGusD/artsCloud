@@ -7,20 +7,27 @@ import "swiper/css/pagination";
 import { Bg, Contents } from "../styles/HeaderStyle";
 import Modal from "./Modal";
 
+// GLOBAL STATE
+// import { useRecoilValue } from 'recoil';
+// const loc = useRecoilValue(currentLoc);
+import { useRecoilState } from "recoil";
+import { currentLanguageState } from "@/module/recoil";
+
 interface Props {
   setMenu: any;
 }
 // setState 하는 부분은 BPT에서 갖다가 복붙하십쇼
 const Header = () => {
-  const [language, setLanguage] = useState("KR");
+  const [currentLanguage, setCurrentLanguage] =
+    useRecoilState(currentLanguageState);
   const [modal, setModal] = useState(false);
 
   const sortingLanguage = (event: any) => {
     console.log(event.target.value);
     if (event.target.value == "EN") {
-      setLanguage("KR");
+      setCurrentLanguage("EN");
     } else {
-      setLanguage("EN");
+      setCurrentLanguage("KR");
     }
   };
   const choiceModal = () => {
@@ -42,22 +49,22 @@ const Header = () => {
             </span>
           </article>
           <article className="headerMenu">
-            {language === "KR" ? (
+            {currentLanguage === "EN" ? (
               <div className="guideMenu">
                 <a href="https://artscloud.net/guide">GUIDE</a>
               </div>
-            ) : language === "EN" ? (
+            ) : currentLanguage === "KR" ? (
               <div className="guideMenu">
                 <a href="https://artscloud.net/ko/guide">가이드</a>
               </div>
             ) : null}
-            {language == "KR" ? (
+            {currentLanguage == "EN" ? (
               <button className="button">
                 <a href="https://api.auth.artscloud.net/?redirect_to=https://artscloud.net/signup">
                   CREATE
                 </a>
               </button>
-            ) : language == "EN" ? (
+            ) : currentLanguage == "KR" ? (
               <button className="button">
                 <a href="https://api.auth.artscloud.net/?redirect_to=https://artscloud.net/signup?lang=ko">
                   만들기
