@@ -17,7 +17,7 @@ const CarouselContent = () => {
   const handleSlideChange = () => {
     const curIdx: number = swiperRef.current.swiper.activeIndex;
     setSwiperIndex(curIdx);
-    let currentSlide = swiperRef.current.swiper.slides[curIdx + 1];
+    let currentSlide = swiperRef.current.swiper.slides[curIdx];
     const currentSlideImg = currentSlide.querySelector("img");
     setCurrentContent(currentSlideImg.alt);
   };
@@ -37,7 +37,7 @@ const CarouselContent = () => {
                   ref={swiperRef}
                   onSlideChange={handleSlideChange}
                   loop
-                  spaceBetween={50}
+                  spaceBetween={10}
                   slidesPerView={3}
                   className="swiperTrack"
                   scrollbar={{ draggable: true }}
@@ -49,17 +49,15 @@ const CarouselContent = () => {
                     },
                   }}
                 >
-                  {counseolImg.map((ele: imgSrcMapType) => (
+                  {counseolImg.map((ele: imgSrcMapType, idx: any) => (
                     <SwiperSlide key={ele.name}>
-                      <div className="swiperHexagon">
-                        <SwiperHexagon>
-                          <img
-                            src={ele.name}
-                            alt={ele.alt}
-                            className="hexagonImg"
-                          />
-                        </SwiperHexagon>
-                      </div>
+                      <SwiperHexagon>
+                        <img
+                          src={ele.name}
+                          alt={ele.alt}
+                          className="hexagonImg"
+                        />
+                      </SwiperHexagon>
                     </SwiperSlide>
                   ))}
                 </Swiper>

@@ -10,10 +10,23 @@ export const ArtContent = styled.div`
   color: #ffffff;
   width: 100%;
   height: 100%;
+  .swiper-slide-active:nth-child(2) {
+    transform: scale(1.2); /* 확대 */
+    opacity: 1; /* 불투명도 */
+  }
+  .swiper-slide:not(.swiper-slide-active) {
+    transform: scale(0.8); /* 축소 */
+    opacity: 0.5; /* 반투명도 */
+  }
+  .swiper-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
   .swiperTitle {
     display: flex;
     text-align: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     font-size: 32px;
   }
   .artLogo {
@@ -48,26 +61,22 @@ export const ArtContent = styled.div`
           display: block;
           .swiperList {
             overflow: hidden;
-            padding: 0px 30%;
-            height: 378px;
+            height: 384px;
             margin: 0;
             padding: 0;
             position: relative;
             display: block;
+
             @media (min-width: 1100px) {
               height: 636px;
             }
-            .swiperTrack .swiperHexagon {
-              display: block;
-              flex-direction: row;
-            }
 
-            .button-prev::after {
-              display: none;
-            }
-            .button-next:after {
-              display: none;
-            }
+            /* .swiperTrack {
+              display: flex;
+              flex-direction: space-between;
+              .swiperHexagon {
+              }
+            } */
           }
         }
       }
@@ -213,7 +222,7 @@ export const FlexBox = styled.div`
 export const Hexagon = styled.div`
   width: ${(props: any) => props.viewportWidth} / 5;
   height: ${(props: any) => props.viewportWidth} / 5;
-  background-color: #6c6;
+
   position: relative;
   -webkit-clip-path: polygon(
     50% 0%,
@@ -233,7 +242,7 @@ export const Hexagon = styled.div`
     object-fit: fill;
     width: 100%;
     height: 100%;
-
+    /* opacity: 0.7; */
     @media (min-width: 1100px) {
       width: 100%;
       height: 100%;
@@ -244,7 +253,7 @@ export const Hexagon = styled.div`
 export const SwiperHexagon = styled.div`
   width: ${(props: any) => props.viewportWidth} / 6;
   height: ${(props: any) => props.viewportWidth} / 6;
-  background-color: #6c6;
+
   position: relative;
   -webkit-clip-path: polygon(
     50% 0%,
@@ -261,14 +270,14 @@ export const SwiperHexagon = styled.div`
     height: ${(props: any) => props.viewportWidth} / 6;
   }
   .hexagonImg {
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     height: 100%;
 
     @media (min-width: 1100px) {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
   }
 `;
