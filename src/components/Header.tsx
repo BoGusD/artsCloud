@@ -22,11 +22,10 @@ const Header = () => {
       setCurrentLanguage("KR");
     }
   };
-  const choiceModal = () => {
-    if (!modal) {
-      setModal(true);
-    } else setModal(false);
+  const toggleModal = () => {
+    setModal((prev) => !prev);
   };
+
   useEffect(() => {
     console.log(modal);
   }, [modal]);
@@ -74,12 +73,20 @@ const Header = () => {
               </select>
             </div>
             {/* button css 추후에 넣어야됨 */}
-            <button onClick={choiceModal} className="">
-              {modal && <div>X</div> && <div>=</div>}
-            </button>
+
+            {modal && (
+              <div onClick={toggleModal} className="HeaderButton">
+                <img src="menu1.png" />
+              </div>
+            )}
+            {!modal && (
+              <div onClick={toggleModal} className="HeaderButton">
+                <img src="menu2.png" />
+              </div>
+            )}
           </article>
         </Contents>
-        {!modal && <Modal />}
+        {modal && <Modal />}
       </Bg>
     </>
   );

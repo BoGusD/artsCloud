@@ -11,25 +11,7 @@ export const Bg = styled.footer`
     padding: 75px 80px;
     height: 244px;
   }
-  .footerLogo {
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    margin-top: 30px;
-    margin-left: 50px;
-    position: relative;
-    height: 30px;
-    @media (min-width: 1100px) {
-      position: absolute;
-      top: 74px;
-      left: 80px;
-      margin-top: 0;
-      width: 200px;
-      height: 50px;
-    }
-  }
+
   .footerContent {
     display: flex;
     -webkit-box-pack: center;
@@ -46,6 +28,36 @@ export const Bg = styled.footer`
       display: flex;
       position: relative;
       background-repeat: no-repeat;
+    }
+  }
+  .footerLogo {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-top: 40px;
+    position: relative;
+    height: 30px;
+    @media (min-width: 1100px) {
+      position: absolute;
+      top: 74px;
+      left: 80px;
+      margin-top: 0;
+      width: 200px;
+      height: 50px;
+    }
+    .footerIcon {
+      align-items: center;
+    }
+  }
+  .footerExplain {
+    margin-top: 30px;
+    color: #585859;
+    font-size: 12px;
+    @media (min-width: 1100px) {
+      text-align: right;
+      font-size: 14px;
     }
   }
 `;

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import iconSrcMap from "@/data/iconSourceMap";
 import { Bg, ModalContents, IconBox } from "../styles/ModalStyle";
+import { useRecoilValue } from "recoil";
+import { currentLanguageState } from "@/module/recoil";
 import Image from "next/image";
 
 const Modal = () => {
   const [svg, setSvg] = useState();
   const [menu, setMenu] = useState(false);
+  const currentLanguage = useRecoilValue(currentLanguageState);
 
   const onMouseEnter = (event: any) => {
     for (let i = 0; i < iconSrcMap.length; i++) {
@@ -35,9 +38,22 @@ const Modal = () => {
                 <div className="profileImage">
                   <img src="pupleicon.png" className="profileImg" />
                 </div>
-                <span>Sign in </span>
-                <div className="barIcon"></div>
-                <span>Sign up</span>
+
+                {currentLanguage === "EN" && (
+                  <>
+                    <span>Sign in </span>
+                    <div className="barIcon"></div>
+                    <span>Sign up</span>
+                  </>
+                )}
+
+                {currentLanguage === "KR" && (
+                  <>
+                    <span>로그인 </span>
+                    <div className="barIcon"></div>
+                    <span>회원가입</span>
+                  </>
+                )}
               </div>
             </div>
             <div className="menu-item">DIVE IN</div>

@@ -72,9 +72,7 @@ export const ModalContents = styled.div`
           position: relative;
           cursor: pointer;
           display: flex;
-          /* -webkit-box-pack: center; */
           justify-content: center;
-          /* -webkit-box-align: center; */
           align-items: center;
           overflow: hidden;
           @media (min-width: 1100px) {

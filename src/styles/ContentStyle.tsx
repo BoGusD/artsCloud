@@ -10,6 +10,13 @@ export const ArtContent = styled.div`
   color: #ffffff;
   width: 100%;
   height: 100%;
+  .swiperTitle {
+    display: flex;
+    text-align: center;
+    /* justify-content: center; */
+    justify-content: space-evenly;
+    font-size: 32px;
+  }
   .artLogo {
     font-weight: bold;
     text-align: center;
@@ -37,6 +44,7 @@ export const ArtContent = styled.div`
         margin: 0px auto;
         width: 100%;
         max-width: 1920px;
+
         .swiperDetail {
           position: relative;
           display: block;
@@ -52,8 +60,15 @@ export const ArtContent = styled.div`
               height: 636px;
             }
             .swiperHexagon {
-              display: flex;
+              display: block;
               flex-direction: row;
+            }
+
+            .button-prev::after {
+              display: none;
+            }
+            .button-next:after {
+              display: none;
             }
           }
         }
@@ -94,7 +109,26 @@ export const ArtContent = styled.div`
           }
         }
       }
-      .search {
+      .selectMenu {
+        display: flex;
+        width: 20%;
+        margin-bottom: 15px;
+        @media (min-width: 1100px) {
+          display: none;
+        }
+      }
+      .miniSearch {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        @media (min-width: 1100px) {
+          display: none;
+        }
+        .miniIcon {
+          display: block;
+        }
+      }
+      .miniSearchView {
         width: 100%;
         display: flex;
         -webkit-box-pack: justify;
@@ -103,7 +137,19 @@ export const ArtContent = styled.div`
         border-radius: 5px;
         height: 32px;
         padding: 0px 10px;
+        .searchHolder {
+          background-color: transparent;
+          color: rgb(255, 255, 255);
+          line-height: 2.5;
+          border: none;
+          font-size: 12px;
+          width: 100%;
+        }
+      }
+      .search {
+        display: none;
         @media (min-width: 1100px) {
+          display: flex;
           height: 40px;
           border-radius: 20px;
           width: 40%;
@@ -111,7 +157,7 @@ export const ArtContent = styled.div`
           max-width: 405px;
           padding: 0px 24px;
         }
-        .serachHolder {
+        .searchHolder {
           background-color: transparent;
           color: rgb(255, 255, 255);
           line-height: 2.5;
@@ -122,6 +168,28 @@ export const ArtContent = styled.div`
             font-size: 18px;
           }
         }
+      }
+    }
+  }
+  .moreContents {
+    text-align: center;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 80px;
+
+    @media (min-width: 1100px) {
+      margin: 120px 0;
+    }
+    .moreButton {
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      text-transform: none;
+      color: white;
+      font-size: 32px;
+
+      @media (min-width: 1100px) {
+        font-size: 40px;
       }
     }
   }
@@ -156,7 +224,7 @@ export const Hexagon = styled.div`
     0% 25%
   );
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  border: 1px solid purple;
+
   @media (min-width: 1100px) {
     width: ${(props: any) => props.viewportWidth} / 5;
     height: ${(props: any) => props.viewportWidth} / 5;
@@ -174,8 +242,8 @@ export const Hexagon = styled.div`
   }
 `;
 export const SwiperHexagon = styled.div`
-  width: ${(props: any) => props.viewportWidth} / 5;
-  height: ${(props: any) => props.viewportWidth} / 5;
+  width: ${(props: any) => props.viewportWidth} / 6;
+  height: ${(props: any) => props.viewportWidth} / 6;
   background-color: #6c6;
   position: relative;
   -webkit-clip-path: polygon(
@@ -187,10 +255,10 @@ export const SwiperHexagon = styled.div`
     0% 25%
   );
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  border: 1px solid purple;
+
   @media (min-width: 1100px) {
-    width: ${(props: any) => props.viewportWidth} / 5;
-    height: ${(props: any) => props.viewportWidth} / 5;
+    width: ${(props: any) => props.viewportWidth} / 6;
+    height: ${(props: any) => props.viewportWidth} / 6;
   }
   .hexagonImg {
     object-fit: cover;

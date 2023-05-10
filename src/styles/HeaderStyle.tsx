@@ -48,6 +48,7 @@ export const Contents = styled.div`
     font-weight: bold;
     -webkit-tap-highlight-color: transparent !important;
     position: relative;
+    margin-left: 20px;
     .imgLogo {
       object-fit: contain;
       cursor: pointer;
@@ -55,6 +56,10 @@ export const Contents = styled.div`
       text-transform: uppercase;
       @media (min-width: 1100px) {
         height: 56px;
+      }
+      @media (max-width: 600px) {
+        width: 90%;
+        height: 90%;
       }
     }
     @media (min-width: 1100px) {
@@ -119,6 +124,39 @@ export const Contents = styled.div`
         color: white;
       }
     }
+    .headerButton {
+      height: 100%;
+      display: flex;
+
+      background-color: transparent;
+    }
     // button 추후에 진행예정
+    .headerMenu {
+      position: relative;
+      width: 20px;
+      height: 16px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent !important;
+      @media (min-width: 1100px) {
+        width: 43px;
+        height: 43px;
+      }
+
+      ::before {
+        content: "";
+        width: 20px;
+        height: 2px;
+        background-color: #ffffff;
+        position: absolute;
+        top: 0;
+        transform-origin: left;
+        transition-duration: 0.3s;
+        @media (min-width: 1100px) {
+          width: 43px;
+          height: 4px;
+          top: 12px;
+        }
+      }
+    }
   }
 `;
