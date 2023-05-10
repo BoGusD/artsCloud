@@ -32,7 +32,9 @@ const Header = () => {
         <Contents>
           <article className="logo">
             <span>
-              <img src="logo.gif" className="imgLogo" alt="logo" />
+              <a href="https://artscloud.net/ko">
+                <img src="logo.gif" className="imgLogo" alt="logo" />
+              </a>
             </span>
           </article>
           <article className="headerMenu">
