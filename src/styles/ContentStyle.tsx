@@ -26,7 +26,7 @@ export const ArtContent = styled.div`
   .swiperTitle {
     display: flex;
     text-align: center;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 32px;
   }
   .artLogo {
