@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Bg = styled.nav`
-  padding: 88px 45px 0 45px;
+  padding: 78px 45px 0 45px;
   background-color: #0f0f11;
-  width: 100vw;
+  width: 100%;
   min-width: 360px;
-  height: 100vh;
+  height: 1000vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -29,7 +29,7 @@ export const ModalContents = styled.div`
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    gap: 40px;
+    gap: 50px;
     height: 100%;
     width: 100%;
     overflow-y: auto;
@@ -154,7 +154,7 @@ export const ModalContents = styled.div`
 `;
 export const IconBox = styled.div`
   display: flex;
-  gap: 17px;
+  gap: 10px;
   @media (min-width: 1100px) {
     position: absolute;
     right: 85px;
@@ -165,7 +165,7 @@ export const IconBox = styled.div`
   }
   .iconBox {
     display: flex;
-    gap: 17px;
+    gap: 14px;
     @media (min-width: 1100px) {
       position: absolute;
       right: 200px;
