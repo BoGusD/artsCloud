@@ -71,14 +71,16 @@ const Modal = () => {
             <IconBox>
               {iconSrcMap.map((ele: iconSrcMapType) => (
                 <div key={ele.origin} className="imgIcon">
-                  <Image
-                    onMouseEnter={onMouseEnter}
-                    onMouseLeave={onMouseLeave}
-                    src={ele.origin}
-                    alt={ele.alt}
-                    width="50"
-                    height="50"
-                  />
+                  <a href={ele.link}>
+                    <Image
+                      onMouseEnter={onMouseEnter}
+                      onMouseLeave={onMouseLeave}
+                      src={ele.origin}
+                      alt={ele.alt}
+                      width="50"
+                      height="50"
+                    />
+                  </a>
                 </div>
               ))}
             </IconBox>
