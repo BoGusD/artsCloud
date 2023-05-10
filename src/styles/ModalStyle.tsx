@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Bg = styled.nav`
-  padding: 78px 45px 0 45px;
+  padding: 88px 45px 0 45px;
   background-color: #0f0f11;
   width: 100%;
   min-width: 360px;
@@ -108,6 +108,8 @@ export const ModalContents = styled.div`
     font-weight: bold;
     color: #ffffff;
     cursor: pointer;
+    /* line-height: 1.15;
+    -webkit-text-size-adjust: 100%; */
     -webkit-tap-highlight-color: transparent !important;
     text-transform: uppercase;
     @media (min-width: 1100px) {
@@ -120,6 +122,7 @@ export const ModalContents = styled.div`
     }
 
     a {
+      font-weight: bold;
       color: white;
       :hover {
         background: linear-gradient(to bottom, #a840ff, #6f00cc, #ff002f);
@@ -154,7 +157,7 @@ export const ModalContents = styled.div`
 `;
 export const IconBox = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 7px;
   @media (min-width: 1100px) {
     position: absolute;
     right: 85px;

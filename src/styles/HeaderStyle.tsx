@@ -54,7 +54,7 @@ export const Contents = styled.div`
       @media (min-width: 1100px) {
         height: 56px;
       }
-      @media (max-width: 600px) {
+      @media (max-width: 650px) {
         width: 90%;
         height: 90%;
       }

@@ -18,12 +18,17 @@ const Bg = styled.div`
   background-color: #0f0f11;
 `;
 const GlobalStyle = createGlobalStyle`
+
+
   * {
-    font-family: GmarketSans;
-    font-style: normal;
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
     font-weight: normal;
+    font-style: normal;
     box-sizing: border-box;
     text-decoration: none; 
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
   }
    ::-webkit-scrollbar {
   display: none; 
