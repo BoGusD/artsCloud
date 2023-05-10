@@ -37,6 +37,7 @@ const CarouselContent = () => {
                   ref={swiperRef}
                   onSlideChange={handleSlideChange}
                   loop
+                  centeredSlides
                   spaceBetween={10}
                   slidesPerView={3}
                   className="swiperTrack"
