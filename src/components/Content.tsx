@@ -107,7 +107,7 @@ const Content = () => {
           <div className="observerContents">
             <div className="searchContents">
               <div className="searchMenu">
-                {currentLanguage === "EN" && (
+                {currentLanguage === "EN" ? (
                   <>
                     <div
                       className="menuTitle"
@@ -134,8 +134,7 @@ const Content = () => {
                       Most Liked
                     </div>
                   </>
-                )}
-                {currentLanguage === "KR" && (
+                ) : (
                   <>
                     <div
                       className="menuTitle"
@@ -164,7 +163,7 @@ const Content = () => {
                   </>
                 )}
               </div>
-              {currentLanguage === "EN" && (
+              {currentLanguage === "EN" ? (
                 <>
                   <div className="miniSearch">
                     <select
@@ -184,8 +183,7 @@ const Content = () => {
                     />
                   </div>
                 </>
-              )}
-              {currentLanguage === "KR" && (
+              ) : (
                 <div className="miniSearch">
                   <select
                     name="sort"
@@ -206,20 +204,18 @@ const Content = () => {
               )}
               {isSearchOn && (
                 <div className="miniSearchView">
-                  {currentLanguage === "EN" && (
+                  {currentLanguage === "EN" ? (
                     <input placeholder="Search" className="searchHolder" />
-                  )}
-                  {currentLanguage === "KR" && (
+                  ) : (
                     <input placeholder="검색" className="searchHolder" />
                   )}
                 </div>
               )}
 
               <div className="search">
-                {currentLanguage === "EN" && (
+                {currentLanguage === "EN" ? (
                   <input placeholder="Search" className="searchHolder" />
-                )}
-                {currentLanguage === "KR" && (
+                ) : (
                   <input placeholder="검색" className="searchHolder" />
                 )}
                 <img src="search.jpg" />
@@ -239,8 +235,7 @@ const Content = () => {
               <>
                 <div className="moreContents">
                   <button onClick={loadMoreImages} className="moreButton">
-                    {currentLanguage === "KR" && <>불러오기</>}
-                    {currentLanguage === "EN" && <>MORE</>}
+                    {currentLanguage === "KR" ? <>불러오기</> : <>MORE</>}
                     &nbsp;
                     <br />
                     <img src="arrow-down.svg" className="moreArrow" />

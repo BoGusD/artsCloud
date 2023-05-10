@@ -1,29 +1,24 @@
 import { useState } from "react";
-import { iconSrcMap, iconSrcMapType } from "@/data/iconSourceMap";
-import { Bg, ModalContents, IconBox } from "../styles/ModalStyle";
+import Image from "next/image";
 import { useRecoilValue } from "recoil";
 import { currentLanguageState } from "@/module/recoil";
-import Image from "next/image";
+import { iconSrcMap, iconSrcMapType } from "@/data/iconSourceMap";
+import { Bg, ModalContents, IconBox } from "../styles/ModalStyle";
 
 const Modal = () => {
+  const [hoveredIcon, setHoveredIcon] = useState(null);
   const currentLanguage = useRecoilValue(currentLanguageState);
 
-  const onMouseEnter = (event: any) => {
-    for (let i = 0; i < iconSrcMap.length; i++) {
-      if (iconSrcMap[i].origin === event.target.src) {
-        event.target.src = iconSrcMap[i].hover;
-        return;
-      }
-    }
+  const handleMouseEnter = (icon: any) => {
+    setHoveredIcon(icon);
   };
 
-  const onMouseLeave = (event: any) => {
-    for (let i = 0; i < iconSrcMap.length; i++) {
-      if (iconSrcMap[i].hover === event.target.src) {
-        event.target.src = iconSrcMap[i].origin;
-        return;
-      }
-    }
+  const handleMouseLeave = () => {
+    setHoveredIcon(null);
+  };
+
+  const getIconSrc = (icon: any) => {
+    return hoveredIcon === icon ? icon.hover : icon.origin;
   };
 
   return (
@@ -37,15 +32,13 @@ const Modal = () => {
                   <img src="pupleicon.png" className="profileImg" />
                 </div>
 
-                {currentLanguage === "EN" && (
+                {currentLanguage === "EN" ? (
                   <>
                     <span>Sign in </span>
                     <div className="barIcon"></div>
                     <span>Sign up</span>
                   </>
-                )}
-
-                {currentLanguage === "KR" && (
+                ) : (
                   <>
                     <span>로그인</span>
                     <div className="barIcon"></div>
@@ -69,14 +62,14 @@ const Modal = () => {
               <div>GUIDE</div>
             </div>
             <IconBox>
-              {iconSrcMap.map((ele: iconSrcMapType) => (
-                <div key={ele.origin} className="imgIcon">
-                  <a href={ele.link}>
+              {iconSrcMap.map((icon: iconSrcMapType) => (
+                <div key={icon.origin} className="imgIcon">
+                  <a href={icon.link}>
                     <Image
-                      onMouseEnter={onMouseEnter}
-                      onMouseLeave={onMouseLeave}
-                      src={ele.origin}
-                      alt={ele.alt}
+                      onMouseEnter={() => handleMouseEnter(icon)}
+                      onMouseLeave={() => handleMouseLeave()}
+                      src={getIconSrc(icon)}
+                      alt={icon.alt}
                       width="50"
                       height="50"
                     />

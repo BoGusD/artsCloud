@@ -42,24 +42,24 @@ const Header = () => {
               <div className="guideMenu">
                 <a href="https://artscloud.net/guide">GUIDE</a>
               </div>
-            ) : currentLanguage === "KR" ? (
+            ) : (
               <div className="guideMenu">
                 <a href="https://artscloud.net/ko/guide">가이드</a>
               </div>
-            ) : null}
+            )}
             {currentLanguage == "EN" ? (
               <button className="button">
                 <a href="https://api.auth.artscloud.net/?redirect_to=https://artscloud.net/signup">
                   CREATE
                 </a>
               </button>
-            ) : currentLanguage == "KR" ? (
+            ) : (
               <button className="button">
                 <a href="https://api.auth.artscloud.net/?redirect_to=https://artscloud.net/signup?lang=ko">
                   만들기
                 </a>
               </button>
-            ) : null}
+            )}
 
             <div className="languageMenu">
               <span>
