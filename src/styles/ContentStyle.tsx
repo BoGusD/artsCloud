@@ -27,7 +27,10 @@ export const ArtContent = styled.div`
     display: flex;
     text-align: center;
     justify-content: space-around;
-    font-size: 32px;
+    font-size: 20px;
+    @media (min-width: 1100px) {
+      font-size: 32px;
+    }
   }
   .artLogo {
     font-weight: bold;
