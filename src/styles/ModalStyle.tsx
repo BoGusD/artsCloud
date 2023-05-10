@@ -12,7 +12,6 @@ export const Bg = styled.nav`
   transform: translateX(0);
   transition-duration: 0.3s;
   color: #ffffff;
-
   @media (min-width: 1100px) {
     padding: 126px 80px 0 170px;
   }
@@ -30,7 +29,7 @@ export const ModalContents = styled.div`
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    gap: 50px;
+    gap: 40px;
     height: 100%;
     width: 100%;
     overflow-y: auto;
@@ -114,8 +113,19 @@ export const ModalContents = styled.div`
     @media (min-width: 1100px) {
       font-size: 90px;
     }
+    :hover {
+      background: linear-gradient(to bottom, #a840ff, #6f00cc, #ff002f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     a {
       color: white;
+      :hover {
+        background: linear-gradient(to bottom, #a840ff, #6f00cc, #ff002f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
     }
   }
   .underMenu {

@@ -1,13 +1,11 @@
 import { useState } from "react";
-import iconSrcMap from "@/data/iconSourceMap";
+import { iconSrcMap, iconSrcMapType } from "@/data/iconSourceMap";
 import { Bg, ModalContents, IconBox } from "../styles/ModalStyle";
 import { useRecoilValue } from "recoil";
 import { currentLanguageState } from "@/module/recoil";
 import Image from "next/image";
 
 const Modal = () => {
-  const [svg, setSvg] = useState();
-  const [menu, setMenu] = useState(false);
   const currentLanguage = useRecoilValue(currentLanguageState);
 
   const onMouseEnter = (event: any) => {
@@ -49,7 +47,7 @@ const Modal = () => {
 
                 {currentLanguage === "KR" && (
                   <>
-                    <span>로그인 </span>
+                    <span>로그인</span>
                     <div className="barIcon"></div>
                     <span>회원가입</span>
                   </>
@@ -71,7 +69,7 @@ const Modal = () => {
               <div>GUIDE</div>
             </div>
             <IconBox>
-              {iconSrcMap.map((ele: any) => (
+              {iconSrcMap.map((ele: iconSrcMapType) => (
                 <div key={ele.origin} className="imgIcon">
                   <Image
                     onMouseEnter={onMouseEnter}

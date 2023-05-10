@@ -6,16 +6,12 @@ import Modal from "./Modal";
 import { useRecoilState } from "recoil";
 import { currentLanguageState } from "@/module/recoil";
 
-interface Props {
-  setMenu: any;
-}
 const Header = () => {
   const [currentLanguage, setCurrentLanguage] =
     useRecoilState(currentLanguageState);
   const [modal, setModal] = useState(false);
 
-  const sortingLanguage = (event: any) => {
-    console.log(event.target.value);
+  const sortingLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value == "EN") {
       setCurrentLanguage("EN");
     } else {
@@ -72,7 +68,6 @@ const Header = () => {
                 <option value="KR">KR</option>
               </select>
             </div>
-            {/* button css 추후에 넣어야됨 */}
 
             {modal && (
               <div onClick={toggleModal} className="HeaderButton">

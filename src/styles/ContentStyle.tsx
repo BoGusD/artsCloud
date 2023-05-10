@@ -13,7 +13,6 @@ export const ArtContent = styled.div`
   .swiperTitle {
     display: flex;
     text-align: center;
-    /* justify-content: center; */
     justify-content: space-evenly;
     font-size: 32px;
   }
@@ -44,7 +43,6 @@ export const ArtContent = styled.div`
         margin: 0px auto;
         width: 100%;
         max-width: 1920px;
-
         .swiperDetail {
           position: relative;
           display: block;
@@ -59,7 +57,7 @@ export const ArtContent = styled.div`
             @media (min-width: 1100px) {
               height: 636px;
             }
-            .swiperHexagon {
+            .swiperTrack .swiperHexagon {
               display: block;
               flex-direction: row;
             }
@@ -118,14 +116,16 @@ export const ArtContent = styled.div`
         }
       }
       .miniSearch {
+        margin-top: 20px;
         display: flex;
         justify-content: space-between;
-        margin-bottom: 20px;
+
         @media (min-width: 1100px) {
           display: none;
         }
         .miniIcon {
           display: block;
+          margin-bottom: 10px;
         }
       }
       .miniSearchView {

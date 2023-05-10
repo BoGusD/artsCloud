@@ -11,8 +11,7 @@ export const Bg = styled.header`
   -webkit-box-align: center;
   align-items: center;
   z-index: 5000;
-
-  /* background: linear-gradient(#0f0f11cc 20%, transparent); */
+  background: linear-gradient(#0f0f11cc 20%, transparent);
   @media (min-width: 1100px) {
     height: 126px;
     padding: 0 80px;
@@ -33,8 +32,6 @@ export const Contents = styled.div`
   height: 88px;
   width: 100%;
   z-index: 5001;
-  // space-between 으로 로고 파트랑, 메뉴 파트를 양쪽 끝단으로 보냈으므로 gap 은 안먹히는 상황
-  /* gap: 30px; */
 
   @media (min-width: 1100px) {
     height: 56px;

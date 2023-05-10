@@ -1,5 +1,11 @@
 const URL = "http://localhost:3000";
-const iconSrcMap: any = [
+
+export interface iconSrcMapType {
+  origin: string;
+  hover: string;
+  alt: string;
+}
+export const iconSrcMap: iconSrcMapType[] = [
   {
     origin: `${URL}/discordLogo.svg`,
     hover: `${URL}/discordHover.svg`,
@@ -26,4 +32,3 @@ const iconSrcMap: any = [
     alt: "youtube",
   },
 ];
-export default iconSrcMap;

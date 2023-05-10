@@ -1,21 +1,13 @@
-import { useState, useEffect, useLayoutEffect, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react"; // basic
-import SwiperCore, { Navigation, Pagination } from "swiper";
-import {
-  Bg,
-  ArtContent,
-  FlexBox,
-  Hexagon,
-  SwiperHexagon,
-} from "@/styles/ContentStyle";
+import { useState, useEffect, useLayoutEffect } from "react";
+import { Bg, ArtContent, FlexBox, Hexagon } from "@/styles/ContentStyle";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { imgSrcMap } from "@/data/imgSourceMap";
-import { counseolImg } from "@/data/imgSourceMap";
 import { useRecoilValue } from "recoil";
 import { currentLanguageState } from "@/module/recoil";
 import { imgSrcMapType } from "@/data/imgSourceMap";
+import CarouselContent from "./CarouselContent";
 
 const Content = () => {
   const currentLanguage = useRecoilValue(currentLanguageState);
@@ -29,20 +21,7 @@ const Content = () => {
   // 실제 배열 0 => 6 => 12 => 18 => 21
   const [isAllImageLoaded, setIsAllImageLoaded] = useState<boolean>(false);
   // 이미지가 다 로딩되었는지 나타내는 boolean
-  const swiperRef = useRef<any>(null);
-  const [swiperIndex, setSwiperIndex] = useState(0);
-  const [currentContent, setCurrentContent] = useState("");
-
-  const handleSlideChange = () => {
-    const curIdx: number = swiperRef.current.swiper.activeIndex;
-    setSwiperIndex(curIdx);
-    let currentSlide = swiperRef.current.swiper.slides[curIdx + 1];
-    const currentSlideImg = currentSlide.querySelector("img");
-    setCurrentContent(currentSlideImg.alt);
-  };
-
   const [order, setOrder] = useState("default");
-  // const [firstLoad, setFirstLoad] = useState(true);
 
   useEffect(() => {
     // 1. 원본, 재료, 실제 배열 초기화
@@ -67,19 +46,17 @@ const Content = () => {
       (a: imgSrcMapType, b: imgSrcMapType) => b.popular - a.popular
     );
   };
-
   const sortByDate = () => {
     imgSrcMap.sort(
       (a: imgSrcMapType, b: imgSrcMapType) =>
         b.date.getTime() - a.date.getTime()
     );
   };
-
   const sortByPoint = () => {
     imgSrcMap.sort((a: imgSrcMapType, b: imgSrcMapType) => b.point - a.point);
   };
 
-  const sortView = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const sortOption = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setOrder(event.target.value);
   };
 
@@ -115,10 +92,9 @@ const Content = () => {
     setIsSearchOn((prev) => !prev);
   };
 
-  // 마운트 이전에 한번 실행해줘야함
+  // 마운트 이전에 실행
   useLayoutEffect(() => {
     loadMoreImages();
-    handleSlideChange();
   }, []);
 
   return (
@@ -126,57 +102,8 @@ const Content = () => {
       <Bg>
         <ArtContent>
           <div className="artLogo">ARTS SPACE</div>
-          <div className="carousel">
-            <div className="carouselContent">
-              <div className="test">
-                <div className="swiperDetail">
-                  <div className="swiperList">
-                    <Swiper
-                      ref={swiperRef}
-                      onSlideChange={handleSlideChange}
-                      loop
-                      spaceBetween={50}
-                      slidesPerView={1}
-                      className="swiperTrack"
-                      scrollbar={{ draggable: true }}
-                      navigation
-                      pagination={{ clickable: true }}
-                      breakpoints={{
-                        500: {
-                          slidesPerView: 1,
-                        },
-                        700: {
-                          slidesPerView: 2,
-                        },
-                        1100: {
-                          slidesPerView: 3,
-                        },
-                      }}
-                    >
-                      {counseolImg.map((ele: any) => (
-                        <SwiperSlide key={ele.name}>
-                          <div className="swiperHexagon">
-                            <SwiperHexagon>
-                              <img
-                                src={ele.name}
-                                alt={ele.alt}
-                                className="hexagonImg"
-                              />
-                            </SwiperHexagon>
-                          </div>
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                  </div>
-                </div>
-                <div className="swiperTitle">
-                  <img src="left-arrow.svg" />
-                  <div>{currentContent}</div>
-                  <img src="right-arrow.svg" />
-                </div>
-              </div>
-            </div>
-          </div>
+
+          <CarouselContent />
           <div className="observerContents">
             <div className="searchContents">
               <div className="searchMenu">
@@ -243,7 +170,7 @@ const Content = () => {
                     <select
                       name="sort"
                       className="selectMenu"
-                      onChange={sortView}
+                      onChange={sortOption}
                     >
                       <option value="Newest">Newest</option>
                       <option value="Popular">Popular</option>
@@ -263,7 +190,7 @@ const Content = () => {
                   <select
                     name="sort"
                     className="selectMenu"
-                    onChange={sortView}
+                    onChange={sortOption}
                   >
                     <option value="Newest">최신순</option>
                     <option value="Popular">조회순</option>
@@ -299,15 +226,14 @@ const Content = () => {
               </div>
             </div>
             <FlexBox>
-              {imgSrcPart.map((ele: any) => (
+              {imgSrcPart.map((ele: imgSrcMapType) => (
                 <div key={ele.name}>
                   <Hexagon>
-                    <img src={ele.name} alt={ele.art} className="hexagonImg" />
+                    <img src={ele.name} alt={ele.alt} className="hexagonImg" />
                   </Hexagon>
                 </div>
               ))}
             </FlexBox>
-            {/* 모든 컨텐츠를 불러온 후에는 더불러오기 버튼 제거하기 */}
 
             {!isAllImageLoaded && (
               <>

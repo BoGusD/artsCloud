@@ -1,5 +1,5 @@
 import { Bg } from "../styles/FooterStyle";
-import iconSrcMap from "@/data/iconSourceMap";
+import { iconSrcMap, iconSrcMapType } from "@/data/iconSourceMap";
 import Image from "next/image";
 import { useRecoilValue } from "recoil";
 import { currentLanguageState } from "@/module/recoil";
@@ -28,7 +28,7 @@ const Footer = () => {
     <>
       <Bg>
         <section className="footerContent">
-          {iconSrcMap.map((ele: any) => (
+          {iconSrcMap.map((ele: iconSrcMapType) => (
             <div key={ele.origin} className="imgIcon">
               <Image
                 onMouseEnter={onMouseEnter}
