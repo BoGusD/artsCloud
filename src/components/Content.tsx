@@ -1,5 +1,11 @@
-import { useState, useEffect, useLayoutEffect } from "react";
-import { Bg, ArtContent, FlexBox, Hexagon } from "@/styles/ContentStyle";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import {
+  Bg,
+  ArtContent,
+  FlexBox,
+  Hexagon,
+  TextStyle,
+} from "@/styles/ContentStyle";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -8,6 +14,7 @@ import { useRecoilValue } from "recoil";
 import { currentLanguageState } from "@/module/recoil";
 import { imgSrcMapType } from "@/data/imgSourceMap";
 import CarouselContent from "./CarouselContent";
+import styled from "styled-components";
 
 const Content = () => {
   const currentLanguage = useRecoilValue(currentLanguageState);
@@ -22,6 +29,8 @@ const Content = () => {
   const [isAllImageLoaded, setIsAllImageLoaded] = useState<boolean>(false);
   // 이미지가 다 로딩되었는지 나타내는 boolean
   const [order, setOrder] = useState("default");
+  const [searchContent, setSearchContent] = useState("");
+  const [searchResCnt, setSearchResCnt] = useState(-1);
 
   useEffect(() => {
     // 1. 원본, 재료, 실제 배열 초기화
@@ -34,12 +43,35 @@ const Content = () => {
       } else if (order === "Most Liked") {
         sortByPoint();
       }
-      const newSrc = imgSrcMap.slice();
-      const newItems = newSrc.splice(0, 6);
-      setImgSrc([...newSrc]);
-      setImgSrcPart(newItems);
+
+      if (order !== "search") {
+        const newSrc = imgSrcMap.slice();
+        const newItems = newSrc.splice(0, 6);
+        setImgSrc([...newSrc]);
+        setImgSrcPart(newItems);
+        setSearchResCnt(-1);
+      }
+      if (order === "search") {
+        const tempSrc = imgSrcMap.slice();
+        let tempArr = [];
+        for (let i = 0; i < tempSrc.length; i++) {
+          if (tempSrc[i].alt.includes(searchContent)) {
+            tempArr.push(tempSrc[i]);
+          }
+        }
+        setImgSrcPart([...tempArr]);
+
+        if (tempArr.length === 0) {
+          setSearchResCnt(0);
+        }
+      }
     }
   }, [order]);
+
+  const searchingContent = (ele: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log(ele.target.value);
+    setSearchContent(ele.target.value);
+  };
 
   const sortByPopularity = () => {
     imgSrcMap.sort(
@@ -96,6 +128,23 @@ const Content = () => {
   useLayoutEffect(() => {
     loadMoreImages();
   }, []);
+
+  const keywordMin = useRef(null);
+  const handleKeyPress_min = (e: any) => {
+    if (e.key === "Enter") {
+      setOrder("search");
+      const searchingWord = keywordMin.current.querySelector("input").value;
+      setSearchContent(searchingWord);
+    }
+  };
+  const keyword = useRef(null);
+  const handleKeyPress = (e: any) => {
+    if (e.key === "Enter") {
+      setOrder("search");
+      const searchingWord = keyword.current.querySelector("input").value;
+      setSearchContent(searchingWord);
+    }
+  };
 
   return (
     <>
@@ -202,25 +251,29 @@ const Content = () => {
                   />
                 </div>
               )}
+
               {isSearchOn && (
-                <div className="miniSearchView">
-                  {currentLanguage === "EN" ? (
-                    <input placeholder="Search" className="searchHolder" />
-                  ) : (
-                    <input placeholder="검색" className="searchHolder" />
-                  )}
+                <div className="miniSearchView" ref={keywordMin}>
+                  <input
+                    placeholder={currentLanguage === "EN" ? "Search" : "검색"}
+                    className="searchHolder"
+                    onKeyPress={handleKeyPress_min}
+                  />
                 </div>
               )}
-
-              <div className="search">
-                {currentLanguage === "EN" ? (
-                  <input placeholder="Search" className="searchHolder" />
-                ) : (
-                  <input placeholder="검색" className="searchHolder" />
-                )}
+              <div className="search" ref={keyword}>
+                <input
+                  placeholder={currentLanguage === "EN" ? "Search" : "검색"}
+                  className="searchHolder"
+                  onKeyPress={handleKeyPress}
+                />
                 <img src="search.jpg" />
               </div>
             </div>
+
+            {/* 검색결과가 없습니다 */}
+            {searchResCnt === 0 && <TextStyle>검색결과가 없습니다</TextStyle>}
+
             <FlexBox>
               {imgSrcPart.map((ele: imgSrcMapType) => (
                 <div key={ele.name}>

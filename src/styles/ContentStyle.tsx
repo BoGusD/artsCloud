@@ -284,3 +284,8 @@ export const SwiperHexagon = styled.div`
     }
   }
 `;
+export const TextStyle = styled.div`
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 100px;
+`;
